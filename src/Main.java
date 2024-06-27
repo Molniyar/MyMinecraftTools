@@ -1,84 +1,187 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
+
+    }
+
+    public static void effectMain() {
         Scanner input = new Scanner(System.in);
+        System.out.print("введите любой эффект");
+        String effect = input.nextLine();
+
+        int low = 1;
+        int high = 5;
+        int random = low + (int) (Math.random() * (high - low + 1));
+        String food = "";
+        switch (random){
+            case 1 -> food = "гнилую плоть";
+            case 2 -> food = "золотое яблоко";
+            case 3 -> food = "сушёную ламинарию";
+            case 4 -> food = "тыквенный пирог";
+            case 5 -> food = "светящиеся ягоды";
+        }
+
         int lowblock = 1;
-        int highblock = 3;
+        int highblock = 10;
         int x = lowblock + (int) (Math.random() * (highblock - lowblock + 1));
-        if (x == 1) {
-            blockMain();
-        }
-        if (x == 2) {
-            itemMain();
-        }
-        if (x == 3) {
-            entityMain();
+
+        System.out.print("Поздравляем, теперь ");
+        switch (x) {
+            case 1 -> System.out.print("эффект под названием " + effect + " будет удалён из майнкрафта");
+            case 2 -> System.out.print("эффект под названием " + effect + " будет иметь улучшенную версию");
+            case 3 -> System.out.print("можно будет скрафтить рагу с эффектом под названием " + effect);
+            case 4 -> System.out.print("можно будет сварить зелье с эффектом под названием " + effect);
+            case 5 -> System.out.print("вы будете получать эффект под названием " + effect + " когда голодаете");
+            case 6 -> System.out.print("вы будете получать эффект под названием " + effect + " когда едите " + food);
+            case 7 -> System.out.print("text7");
+            case 8 -> System.out.print("text8");
+            case 9 -> System.out.print("text9");
+            case 10 ->System.out.print("text10");
         }
     }
 
-    public static void biomeMain (){
+    public static void biomeMain() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Назовите любой биом:");
+        String biome = input.nextLine();
 
+        int small = 1;
+        int big = 5;
+        int z = small + (int) (Math.random() * (big - small + 1));
+        String generation = "";
+        switch (z){
+            case 1 -> generation = "сломанная (парящие острова, проломан бедрок и т.д.)";
+            case 2 -> generation = "равнинная";
+            case 3 -> generation = "горная";
+            case 4 -> generation = "океаническая";
+            case 5 -> generation = "лесистая";
+        }
+
+        int low = 1;
+        int high = 5;
+        int random = low + (int) (Math.random() * (high - low + 1));
+        String block = "";
+        switch (random){
+            case 1 -> block = "красный песок";
+            case 2 -> block = "песок";
+            case 3 -> block = "сухой " + randomColor() + " бетон";
+            case 4 -> block = "наковальня";
+            case 5 -> block = "капельник";
+        }
+
+        int low2 = 1;
+        int high2 = 10;
+        int random2 = low2 + (int) (Math.random() * (high2 - low2 + 1));
+        String entityRandom = "";
+        switch (random2){
+            case 1  -> entityRandom = "визер скелет";
+            case 2  -> entityRandom = "зомби";
+            case 3  -> entityRandom = "фантом";
+            case 4  -> entityRandom = "эндермен";
+            case 5  -> entityRandom = "падающий блок (тип блока: " + block + " )";
+            case 6  -> entityRandom = "скелет";
+            case 7  -> entityRandom = "зомби житель";
+            case 8  -> entityRandom = "гаст";
+            case 9  -> entityRandom = "чешуйница";
+            case 10 -> entityRandom = "разбойник";
+        }
+
+
+        int lowblock = 1;
+        int highblock = 10;
+        int x = lowblock + (int) (Math.random() * (highblock - lowblock + 1));
+
+        System.out.print("Поздравляем, теперь ");
+        switch (x) {
+            case 1  -> System.out.print("в биоме под названием " + biome + " будет температура " + (Math.random() + Math.random()));
+            case 2  -> System.out.print("биом под названием " + biome + " будет иметь улучшенную версию, которая будет спавниться вместо этого биома с шансом " + Math.rint(Math.random() * 100) + "%");
+            case 3  -> System.out.print("в биоме под названием " + biome + " будет спавниться " + entityRandom);
+            case 4  -> System.out.print("биом под названием " + biome + " будет удалён из майнкрафта");
+            case 5  -> System.out.print("в биоме под названием " + biome + " будет спавниться новая структура с ловушками, сундуками и ценным лутом в них");
+            case 6  -> System.out.print("в биоме под названием " + biome + " будет спавниться новая деревня");
+            case 7  -> System.out.print("в биоме под названием " + biome + " будут спавниться новые деревья");
+            case 8  -> System.out.print("биом под названием " + biome + " будет пустым");
+            case 9  -> System.out.print("у биома под названием " + biome + " будет " + generation + " генерация");
+            case 10 -> {
+                if (biome.trim().equalsIgnoreCase("мрачные глубины") || biome.trim().equalsIgnoreCase("тёмные пещеры") || biome.trim().equalsIgnoreCase("тёмные глубины") || biome.trim().toLowerCase() == "грибные поля" || biome.trim().toLowerCase() == "грибной биом" || biome.trim().toLowerCase() == "грибной остров"){
+                    System.out.print("теперь в биоме " + biome + " будут спавниться враждебные мобы");
+                }
+                else System.out.print("теперь в биоме " + biome + " не будут спавниться враждебные мобы");
+            }
+        }
     }
     public static void entityMain (){
         Scanner input = new Scanner(System.in);
         System.out.print("Назовите любого моба:");
-        String e = input.nextLine();
+        String entity = input.nextLine();
 
-
-        String i = "no";
-        String s = "e";
+        String loot = "";
+        String s = "";
         int lowE = 1;
         int highE = 8;
         int bb = lowE + (int) (Math.random() * (highE - lowE + 1));
-        String ss = "ss";
+        String smilthingTemplateType;
         switch (bb){
-            case 1 -> ss = "дюна";
-            case 2 -> ss = "око";
-            case 3 -> ss = "рыло";
-            case 4 -> ss = "чешуя";
-            case 5 -> ss = "шпиль";
-            case 6 -> ss = "вредина";
-            case 7 -> ss = "сборщик";
-            case 8 -> ss = "тишина";
+            case 1 -> smilthingTemplateType = "дюна";
+            case 2 -> smilthingTemplateType = "око";
+            case 3 -> smilthingTemplateType = "рыло";
+            case 4 -> smilthingTemplateType = "чешуя";
+            case 5 -> smilthingTemplateType = "шпиль";
+            case 6 -> smilthingTemplateType = "вредина";
+            case 7 -> smilthingTemplateType = "сборщик";
+            case 8 -> smilthingTemplateType = "тишина";
         }
         int lowEnt = 1;
         int highEnt = 10;
         int b = lowEnt + (int) (Math.random() * (highEnt - lowEnt + 1));
         switch (b){
-            case 1  -> i = "золотой слиток";
-            case 2  -> i = "незеритовый слиток";
-            case 3  -> i = "шалкеровый ящик";
-            case 4  -> i = "алмаз";
-            case 5  -> i = "изумруд";
-            case 6  -> i = "трезубец";
-            case 7  -> i = "какао бобы";
-            case 8  -> i = "кузнечный шаблон (" + s + ")";
-            case 9  -> i = "незеритовое улучшение";
-            case 10 -> i = "кожаный шлем";
+            case 1  -> loot = "золотой слиток";
+            case 2  -> loot = "незеритовый слиток";
+            case 3  -> loot = "шалкеровый ящик";
+            case 4  -> loot = "алмаз";
+            case 5  -> loot = "изумруд";
+            case 6  -> loot = "трезубец";
+            case 7  -> loot = "какао бобы";
+            case 8  -> loot = "кузнечный шаблон (" + s + ")";
+            case 9  -> loot = "незеритовое улучшение";
+            case 10 -> loot = "кожаный шлем";
         }
         int lowEnts = 1;
         int highEnts = 10;
         int c = lowEnts + (int) (Math.random() * (highEnts - lowEnts + 1));
-        String f = "n";
+        String insteadEntity = "n";
         switch (c){
-            case 1  -> f = "коровы";
-            case 2  -> f = "кролика";
-            case 3  -> f = "крипера";
-            case 4  -> f = "чешуйницы";
-            case 5  -> f = "черепахи";
-            case 6  -> f = "магмового куба";
-            case 7  -> f = "эндермена";
-            case 8  -> f = "хоглина";
-            case 9  -> f = "поборника";
-            case 10 -> f = "падающего песка";
+            case 1  -> insteadEntity = "коровы";
+            case 2  -> insteadEntity = "кролика";
+            case 3  -> insteadEntity = "крипера";
+            case 4  -> insteadEntity = "чешуйницы";
+            case 5  -> insteadEntity = "черепахи";
+            case 6  -> insteadEntity = "магмового куба";
+            case 7  -> insteadEntity = "эндермена";
+            case 8  -> insteadEntity = "хоглина";
+            case 9  -> insteadEntity = "поборника";
+            case 10 -> insteadEntity = "падающего песка";
          }
         int no = 1;
         int yes = 10;
         int xx = no + (int) (Math.random() * (yes - no + 1));
-        String biome = "n";
+        String biome = "";
+        switch (xx) {
+            case 1  -> biome = "грибном биоме";
+            case 2  -> biome = "тайге";
+            case 3  -> biome = "саванне";
+            case 4  -> biome = "равнинах энда";
+            case 5  -> biome = "долине душ";
+            case 6  -> biome = "базальтовых дельтах";
+            case 7  -> biome = "горах";
+            case 8  -> biome = "тёплом океане";
+            case 9  -> biome = "холодном океане";
+            case 10 -> biome = "пустоте";
+        }
 
 
         int lowEntity = 1;
@@ -86,18 +189,19 @@ public class Main {
         int a = lowEntity + (int) (Math.random() * (highEntity - lowEntity + 1));
         System.out.print("Поздравляем, ");
         switch (a){
-            case 1  -> System.out.print("теперь " + e + " будет удален(а) из майнкрафта");
-            case 2  -> System.out.print("теперь " + e + " будет враждебен");
-            case 3  -> System.out.print("теперь " + e + " будет спавниться вместо " + f);
-            case 4  -> System.out.print("теперь " + e + " будет спавниться в");
-            case 5  -> System.out.print("теперь " + e + " будет перевернутым");
-            case 6  -> System.out.print("теперь " + e + " будет радужным");
-            case 7  -> System.out.print("теперь " + e + " будет мирным");
-            case 8  -> System.out.print("теперь " + e + " будет летать");
-            case 9  -> System.out.print("теперь с " + e + " будет дропаться ");
-            case 10 -> System.out.print("теперь " + e + " будет способен ломать блоки");
+            case 1  -> System.out.print("теперь "   + entity + " будет удален(а) из майнкрафта");
+            case 2  -> System.out.print("теперь "   + entity + " будет враждебен");
+            case 3  -> System.out.print("теперь "   + entity + " будет спавниться вместо " + insteadEntity);
+            case 4  -> System.out.print("теперь "   + entity + " будет спавниться в " + biome);
+            case 5  -> System.out.print("теперь "   + entity + " будет перевернутым");
+            case 6  -> System.out.print("теперь "   + entity + " будет радужным");
+            case 7  -> System.out.print("теперь "   + entity + " будет мирным");
+            case 8  -> System.out.print("теперь "   + entity + " будет летать");
+            case 9  -> System.out.print("теперь с " + entity + " будет дропаться " + loot);
+            case 10 -> System.out.print("теперь "   + entity + " будет способен ломать блоки");
         }
     }
+    
     public static void blockMain () {
         Scanner input = new Scanner(System.in);
         System.out.print("Назовите любой блок: ");
@@ -144,6 +248,7 @@ public class Main {
         String s = "никто";
         String g = "нет";
         String xyz = "не";
+
 
         int lowOre = 1;
         int highOre = 18;
@@ -241,6 +346,31 @@ public class Main {
             case 15 -> System.out.print("теперь " + item + " будет дропаться с " + xyz + ".");
         }
         input.close();
+    }
+    public static String randomColor() {
+        int min = 1;
+        int max = 16;
+        int random = min + (int) (Math.random() * (max - min + 1));
+        String randomColor = "";
+        switch (random){
+            case 1  -> randomColor = "чёрный";
+            case 2  -> randomColor = "серый";
+            case 3  -> randomColor = "светло-серый";
+            case 4  -> randomColor = "белый";
+            case 5  -> randomColor = "розовый";
+            case 6  -> randomColor = "пурпурный";
+            case 7  -> randomColor = "фиолетовый";
+            case 8  -> randomColor = "красный";
+            case 9  -> randomColor = "оранжевый";
+            case 10 -> randomColor = "жёлтый";
+            case 11 -> randomColor = "зелёный";
+            case 12 -> randomColor = "голубой";
+            case 13 -> randomColor = "синий";
+            case 14 -> randomColor = "лаймовый";
+            case 15 -> randomColor = "коричневый";
+            case 16 -> randomColor = "бирюзовый";
+        }
+        return randomColor;
     }
 
 }
